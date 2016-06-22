@@ -1,22 +1,10 @@
 package com.tdd.exercises;
 
 public class FizzBuzzWhizz {
-    public FizzBuzzWhizz(int fizzNumber, int buzzNumber, int whizzNumber) {
-        this.fizzNumber = fizzNumber;
-        this.buzzNumber = buzzNumber;
-        this.whizzNumber = whizzNumber;
-    }
-
-    public FizzBuzzWhizz(int fizzNumber, int buzzNumber, int whizzNumber, int countOffStartNumber, int countOffEndNumber) {
-        this(fizzNumber, buzzNumber, whizzNumber);
-        this.countOffStartNumber = countOffStartNumber;
-        this.countOffEndNumber = countOffEndNumber;
-    }
-
     public FizzBuzzWhizz() {
     }
 
-    public void CountOffNumber() {
+    public void CountOffNumber(int countOffStartNumber, int countOffEndNumber) {
         for (int i = countOffStartNumber; i <= countOffEndNumber; ++i) {
             System.out.println(HandleNumber(i));
         }
@@ -64,20 +52,18 @@ public class FizzBuzzWhizz {
     }
 
     public boolean TimesOfThree(int number) {
-        return number % 3 == 0;
+        return number % fizzNumber == 0;
     }
 
     public boolean TimesOfFive(int number) {
-        return number % 5 == 0;
+        return number % buzzNumber == 0;
     }
 
     public boolean TimesOfSeven(int number) {
-        return number % 7 == 0;
+        return number % whizzNumber == 0;
     }
 
-    private int fizzNumber;
-    private int buzzNumber;
-    private int whizzNumber;
-    private int countOffStartNumber;
-    private int countOffEndNumber;
+    private static final int fizzNumber = 3;
+    private static final int buzzNumber = 5;
+    private static final int whizzNumber = 7;
 }
