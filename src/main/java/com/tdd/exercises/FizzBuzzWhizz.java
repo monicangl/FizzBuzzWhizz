@@ -1,7 +1,5 @@
 package com.tdd.exercises;
 
-import java.util.Scanner;
-
 public class FizzBuzzWhizz {
     public FizzBuzzWhizz(int fizzNumber, int buzzNumber, int whizzNumber) {
         this.fizzNumber = fizzNumber;
@@ -15,37 +13,7 @@ public class FizzBuzzWhizz {
         this.countOffEndNumber = countOffEndNumber;
     }
 
-    public boolean InputFizzBuzzWhizzNumber() {
-        Scanner s = new Scanner(System.in);
-        System.out.println("please enter the Fizz, Buzz, and Whizz number separated by blank space:");
-        fizzNumber = s.nextInt();
-        buzzNumber = s.nextInt();
-        whizzNumber = s.nextInt();
-
-        if ((0 < fizzNumber && fizzNumber < 10)
-                && (0 < buzzNumber && buzzNumber < 10)
-                && (0 < whizzNumber && whizzNumber < 10)
-                && (fizzNumber != buzzNumber)
-                && (fizzNumber != whizzNumber)
-                && (buzzNumber != whizzNumber)
-                ) {
-            return true;
-        }
-
-        return false;
-    }
-
-    public boolean InputCountOffStartEndNumber() {
-        Scanner s = new Scanner(System.in);
-        System.out.println("Please input the count off start number, and end number separated by blank space:");
-        countOffStartNumber = s.nextInt();
-        countOffEndNumber = s.nextInt();
-
-        if (0 < countOffStartNumber && countOffStartNumber <= countOffEndNumber) {
-            return true;
-        }
-
-        return false;
+    public FizzBuzzWhizz() {
     }
 
     public void CountOffNumber() {
@@ -55,18 +23,14 @@ public class FizzBuzzWhizz {
     }
 
     public String HandleNumber(int number) {
-        int temp = number;
-        while (temp > 0) {
-            if (temp % 10 == fizzNumber) {
-                return "Fizz";
-            } else {
-                temp /= 10;
-            }
+        if (ContainThree(number))
+        {
+            return "Fizz";
         }
 
-        boolean fizz = (number % fizzNumber == 0);
-        boolean buzz = (number % buzzNumber == 0);
-        boolean whizz = (number % whizzNumber == 0);
+        boolean fizz = TimesOfThree(number);
+        boolean buzz = TimesOfFive(number);
+        boolean whizz = TimesOfSeven(number);
 
         if (fizz && buzz && whizz) {
             return "FizzBuzzWhizz";
@@ -85,6 +49,30 @@ public class FizzBuzzWhizz {
         } else {
             return String.valueOf(number);
         }
+    }
+
+    public boolean ContainThree(int number) {
+        while (number > 0) {
+            if (number % 10 == 3) {
+                return true;
+            } else {
+                number /= 10;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean TimesOfThree(int number) {
+        return number % 3 == 0;
+    }
+
+    public boolean TimesOfFive(int number) {
+        return number % 5 == 0;
+    }
+
+    public boolean TimesOfSeven(int number) {
+        return number % 7 == 0;
     }
 
     private int fizzNumber;
