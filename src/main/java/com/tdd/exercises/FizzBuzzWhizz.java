@@ -4,21 +4,21 @@ public class FizzBuzzWhizz {
     public FizzBuzzWhizz() {
     }
 
-    public void CountOffNumber(int countOffStartNumber, int countOffEndNumber) {
-        for (int i = countOffStartNumber; i <= countOffEndNumber; ++i) {
-            System.out.println(HandleNumber(i));
+    public void CountOffNumber(int startNumber, int endNumber) {
+        for (int i = startNumber; i <= endNumber; ++i) {
+            System.out.println(CountOffNumber(i));
         }
     }
 
-    public String HandleNumber(int number) {
-        if (ContainThree(number))
+    public String CountOffNumber(int number) {
+        if (ContainFizzNumber(number))
         {
             return "Fizz";
         }
 
-        boolean fizz = TimesOfThree(number);
-        boolean buzz = TimesOfFive(number);
-        boolean whizz = TimesOfSeven(number);
+        boolean fizz = TimesOfFizzNumber(number);
+        boolean buzz = TimesOfBuzzNumber(number);
+        boolean whizz = TimesOfWhizzNumber(number);
 
         if (fizz && buzz && whizz) {
             return "FizzBuzzWhizz";
@@ -39,9 +39,9 @@ public class FizzBuzzWhizz {
         }
     }
 
-    public boolean ContainThree(int number) {
+    public boolean ContainFizzNumber(int number) {
         while (number > 0) {
-            if (number % 10 == 3) {
+            if (number % 10 == fizzNumber) {
                 return true;
             } else {
                 number /= 10;
@@ -51,19 +51,25 @@ public class FizzBuzzWhizz {
         return false;
     }
 
-    public boolean TimesOfThree(int number) {
+    public boolean TimesOfFizzNumber(int number) {
         return number % fizzNumber == 0;
     }
 
-    public boolean TimesOfFive(int number) {
+    public boolean TimesOfBuzzNumber(int number) {
         return number % buzzNumber == 0;
     }
 
-    public boolean TimesOfSeven(int number) {
+    public boolean TimesOfWhizzNumber(int number) {
         return number % whizzNumber == 0;
     }
 
-    private static final int fizzNumber = 3;
-    private static final int buzzNumber = 5;
-    private static final int whizzNumber = 7;
+    public void SetFizzBuzzWhizzNumber(int fizzNumber, int buzzNumber, int whizzNumber) {
+        this.fizzNumber = fizzNumber;
+        this.buzzNumber = buzzNumber;
+        this.whizzNumber = whizzNumber;
+    }
+
+    private int fizzNumber;
+    private int buzzNumber;
+    private int whizzNumber;
 }
