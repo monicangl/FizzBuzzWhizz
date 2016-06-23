@@ -1,4 +1,4 @@
-package com.tdd.exercises;
+package com.github.monicangl.FizzBuzzWhizz;
 
 public class FizzBuzzWhizz {
     public FizzBuzzWhizz() {

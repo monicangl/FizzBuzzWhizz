@@ -1,7 +1,6 @@
-package com.tdd.exercises;
+package com.github.monicangl.FizzBuzzWhizz;
 
-import org.junit.After;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
@@ -9,20 +8,29 @@ import static org.junit.Assert.assertTrue;
 
 public class FizzBuzzWhizzTest {
 
-    private FizzBuzzWhizz fizzBuzzWhizz;
+    private FizzHandler fizzHandler;
+    private ContainFizzHandler containFizzHandler;
+    private FizzBuzzHandler fizzBuzzHandler;
+    private FizzWhizzHandler fizzWhizzHandler;
+    private BuzzWhizzHandler buzzWhizzHandler;
+    private FizzBuzzWhizzHandler fizzBuzzWhizzHandler;
+    private BuzzHandler buzzHandler;
+    private WhizzHandler whizzHandler;
 
     public FizzBuzzWhizzTest() {
-        this.fizzBuzzWhizz = new FizzBuzzWhizz();
+        this.fizzHandler = new FizzHandler(null);
+        this.buzzHandler = new BuzzHandler(null);
+        this.whizzHandler = new WhizzHandler(null);
+        this.containFizzHandler = new ContainFizzHandler(null);
+        this.fizzBuzzHandler = new FizzBuzzHandler(null);
+        this.fizzWhizzHandler = new FizzWhizzHandler(null);
+        this.buzzWhizzHandler = new BuzzWhizzHandler(null);
+        this.fizzBuzzWhizzHandler = new FizzBuzzWhizzHandler(null);
     }
 
-    @Before
-    public void setUp() {
-        fizzBuzzWhizz.setFizzBuzzWhizzNumber(3, 5, 7);
-    }
-
-    @After
-    public void tearDown() {
-
+    @BeforeClass
+    public static void setUpClass() {
+        NumberHandler.setFizzBuzzWhizzNumber(3, 5, 7);
     }
 
     @Test
@@ -31,7 +39,7 @@ public class FizzBuzzWhizzTest {
         int number = 37;
 
         // when
-        boolean result = fizzBuzzWhizz.containFizzNumber(number);
+        boolean result = containFizzHandler.meetCondition(number);
 
         // then
         assertTrue("failure - should be true", result);
@@ -43,7 +51,7 @@ public class FizzBuzzWhizzTest {
         int number = 18;
 
         // when
-        boolean result = fizzBuzzWhizz.containFizzNumber(number);
+        boolean result = containFizzHandler.meetCondition(number);
 
         // then
         assertFalse("failure - should be false", result);
@@ -55,7 +63,7 @@ public class FizzBuzzWhizzTest {
         int number = 15;
 
         // when
-        boolean result = fizzBuzzWhizz.timesOfFizzBuzzNumber(number);
+        boolean result = fizzBuzzHandler.meetCondition(number);
 
         // then
         assertTrue("failure - should be true", result);
@@ -67,7 +75,7 @@ public class FizzBuzzWhizzTest {
         int number = 6;
 
         // when
-        boolean result = fizzBuzzWhizz.timesOfFizzBuzzNumber(number);
+        boolean result = fizzBuzzHandler.meetCondition(number);
 
         // then
         assertFalse("failure - should be false", result);
@@ -79,7 +87,7 @@ public class FizzBuzzWhizzTest {
         int number = 21;
 
         // when
-        boolean result = fizzBuzzWhizz.timesOfFizzWhizzNumber(number);
+        boolean result = fizzWhizzHandler.meetCondition(number);
 
         // then
         assertTrue("failure - should be true", result);
@@ -91,7 +99,7 @@ public class FizzBuzzWhizzTest {
         int number = 6;
 
         // when
-        boolean result = fizzBuzzWhizz.timesOfFizzWhizzNumber(number);
+        boolean result = fizzWhizzHandler.meetCondition(number);
 
         // then
         assertFalse("failure - should be false", result);
@@ -103,7 +111,7 @@ public class FizzBuzzWhizzTest {
         int number = 35;
 
         // when
-        boolean result = fizzBuzzWhizz.timesOfBuzzWhizzNumber(number);
+        boolean result = buzzWhizzHandler.meetCondition(number);
 
         // then
         assertTrue("failure - should be true", result);
@@ -115,7 +123,7 @@ public class FizzBuzzWhizzTest {
         int number = 6;
 
         // when
-        boolean result = fizzBuzzWhizz.timesOfBuzzWhizzNumber(number);
+        boolean result = buzzWhizzHandler.meetCondition(number);
 
         // then
         assertFalse("failure - should be false", result);
@@ -127,7 +135,7 @@ public class FizzBuzzWhizzTest {
         int number = 105;
 
         // when
-        boolean result = fizzBuzzWhizz.timesOfFizzBuzzWhizzNumber(number);
+        boolean result = fizzBuzzWhizzHandler.meetCondition(number);
 
         // then
         assertTrue("failure - should be true", result);
@@ -139,7 +147,7 @@ public class FizzBuzzWhizzTest {
         int number = 6;
 
         // when
-        boolean result = fizzBuzzWhizz.timesOfFizzBuzzWhizzNumber(number);
+        boolean result = fizzBuzzWhizzHandler.meetCondition(number);
 
         // then
         assertFalse("failure - should be false", result);
@@ -151,7 +159,7 @@ public class FizzBuzzWhizzTest {
         int number = 18;
 
         // when
-        boolean result = fizzBuzzWhizz.timesOfFizzNumber(number);
+        boolean result = fizzHandler.meetCondition(number);
 
         // then
         assertTrue("failure - should be true", result);
@@ -163,7 +171,7 @@ public class FizzBuzzWhizzTest {
         int number = 1;
 
         // when
-        boolean result = fizzBuzzWhizz.timesOfFizzNumber(number);
+        boolean result = fizzHandler.meetCondition(number);
 
         // then
         assertFalse("failure - should be false", result);
@@ -175,7 +183,7 @@ public class FizzBuzzWhizzTest {
         int number = 10;
 
         // when
-        boolean result = fizzBuzzWhizz.timesOfBuzzNumber(number);
+        boolean result = buzzHandler.meetCondition(number);
 
         // then
         assertTrue("failure - should be true", result);
@@ -187,7 +195,7 @@ public class FizzBuzzWhizzTest {
         int number = 11;
 
         // when
-        boolean result = fizzBuzzWhizz.timesOfBuzzNumber(number);
+        boolean result = buzzHandler.meetCondition(number);
 
         // then
         assertFalse("failure - should be false", result);
@@ -199,7 +207,7 @@ public class FizzBuzzWhizzTest {
         int number = 35;
 
         // when
-        boolean result = fizzBuzzWhizz.timesOfWhizzNumber(number);
+        boolean result = whizzHandler.meetCondition(number);
 
         // then
         assertTrue("failure - should be true", result);
@@ -211,7 +219,7 @@ public class FizzBuzzWhizzTest {
         int number = 6;
 
         // when
-        boolean result = fizzBuzzWhizz.timesOfWhizzNumber(number);
+        boolean result = whizzHandler.meetCondition(number);
 
         // then
         assertFalse("failure - should be false", result);
